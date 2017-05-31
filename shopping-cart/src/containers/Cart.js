@@ -1,12 +1,12 @@
 import React from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import * as CartActions from '../actions/CartActions'
 import Shelf from '../components/Shelf'
 
 const Cart = (props) => {
-  let CartItems = props.cart.map((item, id) => {
+  let cartItems = props.cart.map((item, id) => {
     return (
       <li key={id}>
         {item}
@@ -25,19 +25,22 @@ const Cart = (props) => {
   )
 }
 
-function mapStateToProps(state,props) {
+
+function mapStateToProps(state, props) {
   return {
     cart: state.cart
   };
 }
 
-function mapDispatchToProps(props) {
+
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(CartActions, dispatch)
   }
 }
 
 const wrapperFunction = connect(mapStateToProps, mapDispatchToProps)
+
 
 const wrappedComponent = wrapperFunction(Cart)
 
